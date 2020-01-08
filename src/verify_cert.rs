@@ -231,7 +231,6 @@ fn check_basic_constraints(
     };
 
     match (used_as_ca, is_ca, path_len_constraint) {
-        (UsedAsCA::No, true, _) => Err(Error::CAUsedAsEndEntity),
         (UsedAsCA::Yes, false, _) => Err(Error::EndEntityUsedAsCA),
         (UsedAsCA::Yes, true, Some(len)) if sub_ca_count > len =>
             Err(Error::PathLenConstraintViolated),
